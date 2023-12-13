@@ -74,9 +74,15 @@ options = [
     (4, 0),
 ]
 
+# option recebe o input
+
 set_songs(*options[option])
+
 
 while True:
     chosen_song = choice(songs)
+    print("assets/" + chosen_song)
     play_ogg("assets/" + chosen_song)
-    sleep(randint((180 + get_file_seconds("assets"))))
+    time = randint((180 + get_file_seconds("assets/" + chosen_song)))
+    sleep(time)
+    print(time)
