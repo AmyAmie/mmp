@@ -1,6 +1,6 @@
 import pygame
 from random import choice, randint
-from os import listdir, sys
+from os import listdir
 from sys import exit
 from time import sleep
 from pydub import AudioSegment
@@ -74,11 +74,7 @@ options = [
     (4, 0),
 ]
 
-# option recebe o input
-
 set_songs(*options[option])
-
-sys("cls")
 
 while True:
     chosen_song = choice(songs)
