@@ -3,8 +3,6 @@ from random import choice, randint
 from os import listdir
 from sys import exit
 from time import sleep
-from pydub import AudioSegment
-from pydub.utils import mediainfo
 
 def set_songs(song1, song2=None):
     global songs
@@ -15,11 +13,6 @@ def set_songs(song1, song2=None):
         return
     
     songs = music[song1] + music[song2]
-
-def get_file_seconds(file_path):
-    audio = AudioSegment.from_ogg(file_path)
-    duration_seconds = audio.duration_seconds
-    return duration_seconds
 
 def play_ogg(file_path):
     pygame.init()
@@ -39,7 +32,7 @@ def play_ogg(file_path):
 music = [
     ['background.ogg', 'calm1.ogg', 'calm2.ogg', 'calm3.ogg', 'calm4.ogg', 'calm5.ogg', 'calm6.ogg', 'droopy1.ogg', 'droopy2.ogg', 'far_lands.ogg', 'hal1.ogg', 'hal2.ogg', 'hal3.ogg', 'hal4.ogg', 'infinite_amethyst.ogg', 'moog1.ogg', 'nocturne.ogg', 'nuance1.ogg', 'nuance2.ogg', 'piano1.ogg', 'piano2.ogg', 'piano3.ogg'],
 
-    ['axolotl.ogg', 'background.ogg', 'calm1.ogg', 'calm2.ogg', 'calm3.ogg', 'calm4.ogg', 'calm5.ogg', 'creative1', 'creative2', 'creative3', 'creative4', 'creative5', 'creative6', 'calm6.ogg', 'droopy1.ogg', 'droopy2.ogg', 'far_lands.ogg', 'hal1.ogg', 'hal2.ogg', 'hal3.ogg', 'hal4.ogg', 'infinite_amethyst.ogg', 'moog1.ogg', 'nocturne.ogg', 'nuance1.ogg', 'nuance2.ogg', 'otherside.ogg', 'piano1.ogg', 'piano2.ogg', 'piano3.ogg', 'shuniji.ogg'],
+    ['background.ogg', 'calm1.ogg', 'calm2.ogg', 'calm3.ogg', 'calm4.ogg', 'calm5.ogg', 'creative1.ogg', 'creative2.ogg', 'creative3.ogg', 'creative4.ogg', 'creative5.ogg', 'creative6.ogg', 'calm6.ogg', 'droopy1.ogg', 'droopy2.ogg', 'far_lands.ogg', 'hal1.ogg', 'hal2.ogg', 'hal3.ogg', 'hal4.ogg', 'infinite_amethyst.ogg', 'moog1.ogg', 'nocturne.ogg', 'nuance1.ogg', 'nuance2.ogg', 'otherside.ogg', 'piano1.ogg', 'piano2.ogg', 'piano3.ogg', 'shuniji.ogg'],
 
     ['cat.ogg', 'chirp.ogg', 'far.ogg', 'mall.ogg', 'otherside.ogg',  'stal.ogg', 'strad.ogg', 'wait.ogg'],
 
@@ -55,7 +48,6 @@ print("""[1] Survival
 [5] All
 [6] Music Discs + Survival
 [7] Music Discs + Creative
-[8] Underwater + Survival
 [0] Quit
 """)
 
@@ -71,10 +63,8 @@ options = [
     (4,),
     (5, 0),
     (5, 1),
-    (4, 0),
 ]
 
-# option recebe o input
 
 set_songs(*options[option])
 
@@ -83,6 +73,3 @@ while True:
     chosen_song = choice(songs)
     print("assets/" + chosen_song)
     play_ogg("assets/" + chosen_song)
-    time = randint((180 + get_file_seconds("assets/" + chosen_song)))
-    sleep(time)
-    print(time)
